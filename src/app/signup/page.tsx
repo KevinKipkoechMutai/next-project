@@ -58,11 +58,11 @@ export default function SignupPage() {
            </div>
            <button
             onClick={onSignup}
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 bg-blue-700"
            >
             Register
             </button>
-            <Link href="/login">Log in</Link>
+            <Link href="/login" className="text-blue-700">Log in</Link>
         </div>
     )
 }
