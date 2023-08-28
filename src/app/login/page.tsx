@@ -14,12 +14,20 @@ export default function LoginPage() {
     const [buttonDisabled, setButtonDisabled] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
 
+    //console.log(user)
+
     const onLogin = async () => {
         try {
-            
+            setLoading(true)
+            const response = await axios.post("/api/users/login", user)
+            console.log("Login success", response.data)
+            toast.success("Login success")
+            router.push("/profile")
         } catch (error: any) {
             console.log("Login failed", error.message)
             toast.error(error.message)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -33,7 +41,7 @@ export default function LoginPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>Log in</h1>
+            <h1>{loading ? "Processing" : "Log in"}</h1>
             <hr/>
            <div className="flex flex-col items-start justify-center">
             <div className="flex flex-row items-center justify-between w-[100%]">
